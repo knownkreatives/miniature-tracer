@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[codz]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+.installed.cfg
+pip-log.txt
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.Python
+build/
+dist/
+develop-eggs/
+.pytest_cache/
+
+# C++
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.a
+*.so
+*.dylib
+*.cmake
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Visual Studio / IDE
+*.vcxproj
+*.sln
+*.user
+*.suo
+*.ncb
+*.ipch
+*.aps
+*.dbmdl
+*.opensdf
+*.sdf
+
+# Compiled / build artifacts
+dist/
+out/
+
+# Github
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
