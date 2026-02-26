@@ -8,11 +8,7 @@
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/debug",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_TOOLCHAIN_FILE": "C:/Libraries/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "Python3_ROOT": "C:/Python312",
-                "Python3_LIBRARY_DEBUG": "C:/Libraries/vcpkg/installed/x64-windows/debug/lib/python312_d.lib",
-                "Python3_LIBRARY_RELEASE": "C:/Libraries/vcpkg/installed/x64-windows/lib/python312.lib"
+                "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
@@ -22,11 +18,17 @@
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/release",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_TOOLCHAIN_FILE": "C:/Libraries/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "Python3_ROOT": "C:/Python312",
-                "Python3_LIBRARY_RELEASE": "C:/Libraries/vcpkg/installed/x64-windows/lib/python312.lib",
-                "Python3_LIBRARY_DEBUG": "C:/Libraries/vcpkg/installed/x64-windows/debug/lib/python312_d.lib"
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug_release",
+            "displayName": "Debug Info along Release Build",
+            "description": "Debuggin info alongside a release build with vcpkg",	
+            "generator": "Visual Studio 17 2022",
+            "binaryDir": "${sourceDir}/build/debug_release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
             }
         }
     ]
