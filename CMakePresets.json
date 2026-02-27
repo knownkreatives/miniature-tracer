@@ -24,7 +24,7 @@
         {
             "name": "debug_release",
             "displayName": "Debug Info along Release Build",
-            "description": "Debuggin info alongside a release build with vcpkg",	
+            "description": "Debugging info alongside a release build with vcpkg",	
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/debug_release",
             "cacheVariables": {
