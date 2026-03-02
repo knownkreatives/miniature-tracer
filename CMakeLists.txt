@@ -34,14 +34,13 @@ if(NOT pybind11_FOUND)
 endif()
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
-find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
-set(PROJECT_DIR "${CMAKE_SOURCE_DIR}/src")
-set(SOURCT_DIR "${PROJECT_DIR}/contents")
-set(INCLUDE_DIR "${PROJECT_DIR}/include")
+set(CPP_PROJECT_DIR "${CMAKE_SOURCE_DIR}/cpp")
+set(SOURCT_DIR "${CPP_PROJECT_DIR}/src")
+set(INCLUDE_DIR "${CPP_PROJECT_DIR}/include")
 
 file(GLOB_RECURSE CPP_FILES "${SOURCT_DIR}/*.cpp")
-file(GLOB_RECURSE PY_FILES "${SOURCT_DIR}/*.py")
+file(GLOB_RECURSE PY_FILES "${CMAKE_SOURCE_DIR}/py/*.py")
 
 include_directories(${INCLUDE_DIR})
 
