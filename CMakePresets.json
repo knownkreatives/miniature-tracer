@@ -7,8 +7,11 @@
             "description": "Debug build with vcpkg",
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/debug",
+            "toolchainFile": "C:/Libraries/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "BUILD_MAIN": "OFF"
             }
         },
         {

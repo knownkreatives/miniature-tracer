@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(Miniature_Raytracer)
+project(miniature_raytracer)
 
 # Use C++17
 set(CMAKE_CXX_STANDARD 17)
@@ -55,15 +55,13 @@ if(BUILD_MAIN)
         imgui::imgui
         pybind11::embed
     )
-endif()
+    
+    set(RESOURCES_DIR "${SOURCT_DIR}/Resources")
+    set(RESOURCES_PATH "$<TARGET_FILE_DIR:main>/Resources")
+    add_custom_command(TARGET main POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${RESOURCES_DIR} ${RESOURCES_PATH}
+    )
 
-set(RESOURCES_DIR "${SOURCT_DIR}/Resources")
-set(RESOURCES_PATH "$<TARGET_FILE_DIR:main>/Resources")
-add_custom_command(TARGET main POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${RESOURCES_DIR} ${RESOURCES_PATH}
-)
-
-if(BUILD_MAIN)
     set_target_properties(main PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     )
@@ -89,7 +87,7 @@ if(BUILD_PY_EXTENSION)
     set(PY_EXT_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/py/src/mypkg/_ext")
 
     pybind11_add_module(minitracer_bindings
-        "${PROJECT_DIR}/contents/Bindings/pybindings.cpp"
+        "${CPP_PROJECT_DIR}/src/Bindings/pybindings.cpp"
     )
 
     target_include_directories(minitracer_bindings PRIVATE ${INCLUDE_DIR})
@@ -102,9 +100,3 @@ if(BUILD_PY_EXTENSION)
 
     add_custom_target(build_python DEPENDS minitracer_bindings)
 endif()
-
-add_custom_command(TARGET main POST_BUILD
-    COMMAND ${Python3_EXECUTABLE} -m venv "$<TARGET_FILE_DIR:main>/.venv"
-    COMMAND "$<TARGET_FILE_DIR:main>/.venv/Scripts/python.exe" -m pip install --upgrade pip
-    COMMAND "$<TARGET_FILE_DIR:main>/.venv/Scripts/python.exe" -m pip install -r "${PROJECT_DIR}/requirements.txt"
-)
