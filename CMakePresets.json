@@ -2,36 +2,17 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "debug",
-            "displayName": "Debug Build",
-            "description": "Debug build with vcpkg",
+            "name": "vcpkg",
+            "description": "Build with vcpkg",
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/debug",
-            "toolchainFile": "C:/Libraries/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "binaryDir": "${sourceDir}/build",
+            "architecture": "x64",
+            "environment": {
+                "VCPKG_ROOT": "C:\\Libraries\\vcpkg"
+            },
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "BUILD_MAIN": "OFF"
-            }
-        },
-        {
-            "name": "release",
-            "displayName": "Release Build",
-            "description": "Release build with vcpkg",	
-            "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/release",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "debug_release",
-            "displayName": "Debug Info along Release Build",
-            "description": "Debugging info alongside a release build with vcpkg",	
-            "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/debug_release",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_PREFIX_PATH": "$env{VCPKG_ROOT}/installed/x64-windows"
             }
         }
     ]
