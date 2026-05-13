@@ -2,17 +2,20 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "vcpkg",
-            "description": "Build with vcpkg",
-            "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build",
-            "architecture": "x64",
+            "name": "default",
+            "displayName": "GCC 6.3.0 mingw32",
+            "description": "Using compilers: C = C:\\Libraries\\MinGW\\bin\\gcc.exe, CXX = C:\\Libraries\\MinGW\\bin\\g++.exe",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
             "environment": {
-                "VCPKG_ROOT": "C:\\Libraries\\vcpkg"
+                "VCPKG_ROOT": "vcpkg_export"
             },
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_PREFIX_PATH": "$env{VCPKG_ROOT}/installed/x64-windows"
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "C:/Libraries/MinGW/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/Libraries/MinGW/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Debug"
             }
         }
     ]

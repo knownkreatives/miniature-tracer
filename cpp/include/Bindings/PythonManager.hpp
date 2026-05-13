@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <filesystem>
+#include <unordered_set> 
 #include <pybind11/pybind11.h>
 #include <pybind11/embed.h>
 
@@ -31,12 +32,12 @@ namespace {
     };
 };
 
-
 struct Module {
 public:
     std::string name; // Store the module name used to import the module
     std::string path; // Optional: Store the path for error reporting or future use
 
+    Module() = default;
     Module(const std::string& moduleName, const py::object& moduleObject, const std::string& modulePath = "", bool autoLoad = true)
         : name(moduleName), path(modulePath), pythonObject(moduleObject) {
         if (autoLoad) {
@@ -47,10 +48,10 @@ public:
     void load(); // Load the module using pybind11 and store the result in the module member variable
     void unload(); // Unload the module if necessary (note: Python modules cannot be truly unloaded, but we can clear references)
 
-    void call_function(const std::string& func_name); // Call a function without arguments and handle errors
-    py::object call_function_return(const std::string& func_name); // Call a function and return the result, handling errors
-    void call_function_with_args(const std::string& func_name, const std::vector<py::object>& args); // Call a function with arguments and handle errors
-    py::object call_function_with_args_return(const std::string& func_name, const std::vector<py::object>& args); // Call a function with arguments and return the result, handling errors
+    void call_procedure(const std::string& func_name); // Call a function without arguments and handle errors
+    py::object call_function(const std::string& func_name); // Call a function and return the result, handling errors
+    void call_procedure_with_args(const std::string& func_name, const std::vector<py::object>& args); // Call a function with arguments and handle errors
+    py::object call_function_with_args(const std::string& func_name, const std::vector<py::object>& args); // Call a function with arguments and return the result, handling errors
     
     py::object get_attribute(const std::string& attr_name); // Get an attribute from the module and handle errors
     py::object get_module() const; // Return the loaded module object for direct access, handling errors

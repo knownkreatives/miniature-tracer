@@ -16,7 +16,7 @@ void Module::unload() {
     loaded = false;
 }
 
-void Module::call_function(const std::string& func_name) {
+void Module::call_procedure(const std::string& func_name) {
     if (loaded) {
         try {
             py::object func = pythonObject.attr(func_name.c_str());
@@ -30,7 +30,7 @@ void Module::call_function(const std::string& func_name) {
     }
 }
 
-void Module::call_function_with_args(const std::string& func_name, const std::vector<py::object>& args) {
+void Module::call_procedure_with_args(const std::string& func_name, const std::vector<py::object>& args) {
     if (loaded) {
         try {
             py::object func = pythonObject.attr(func_name.c_str());
@@ -44,7 +44,7 @@ void Module::call_function_with_args(const std::string& func_name, const std::ve
     }
 }
 
-py::object Module::call_function_return(const std::string& func_name) {
+py::object Module::call_function(const std::string& func_name) {
     if (loaded) {
         try {
             py::object func = pythonObject.attr(func_name.c_str());
@@ -60,7 +60,7 @@ py::object Module::call_function_return(const std::string& func_name) {
     return py::object(); // Return an empty object on failure
 }
 
-py::object Module::call_function_with_args_return(const std::string& func_name, const std::vector<py::object>& args) {
+py::object Module::call_function_with_args(const std::string& func_name, const std::vector<py::object>& args) {
     if (loaded) {
         try {
             py::object func = pythonObject.attr(func_name.c_str());

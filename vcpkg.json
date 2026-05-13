@@ -1,5 +1,13 @@
 {
+  "name": "test",
+  "version": "0",
   "dependencies": [
-    "fmt"
+    "pybind11",
+    "opengl",
+    "glad",
+    "glfw3",
+    "imgui",
+    "glm",
+    "stb"
   ]
 }

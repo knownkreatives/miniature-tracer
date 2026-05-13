@@ -2,12 +2,6 @@
   "version": 8,
   "configurePresets": [
     {
-      "name": "default",
-      "displayName": "Default",
-      "description": "Default configuration with vcpkg integration",
-      "inherits": "vcpkg"
-    },
-    {
       "name": "debug",
       "displayName": "Debug",
       "description": "Build with debug information for profiling and debugging",
@@ -17,10 +11,9 @@
         "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "OFF",
         "CMAKE_VERBOSE_MAKEFILE": "ON",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "ENABLE_DEBUG_OUTPUT": "ON"
-      },
-      "debug": {
-        "output": true
+        "ENABLE_DEBUG_OUTPUT": "ON",
+        "DEBUG_CUSTOM": "ON",
+        "VCPKG_INSTALL_OPTIONS": "--debug"
       }
     },
     {
@@ -33,10 +26,9 @@
         "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "ON",
         "CMAKE_VERBOSE_MAKEFILE": "OFF",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "OFF",
-        "ENABLE_DEBUG_OUTPUT": "OFF"
-      },
-      "debug": {
-        "output": false
+        "ENABLE_DEBUG_OUTPUT": "OFF",
+        "DEBUG_CUSTOM": "OFF",
+        "VCPKG_INSTALL_OPTIONS": ""
       }
     },
     {
@@ -48,36 +40,6 @@
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "ON",
         "CMAKE_VERBOSE_MAKEFILE": "OFF"
-      }
-    },
-    {
-      "name": "tests",
-      "displayName": "Tests",
-      "description": "Build with tests",
-      "inherits": "relwithdebinfo",
-      "cacheVariables": {
-        "BUILD_TESTS": "ON"
-      }
-    },
-    {
-      "name": "benchmarks",
-      "displayName": "Benchmarks",
-      "description": "Build with preset scenes for benchmarking",
-      "inherits": "relwithdebinfo",
-      "cacheVariables": {
-        "BUILD_BENCHMARKS": "ON"
-      }
-    },
-    {
-      "name": "coverage",
-      "displayName": "Coverage",
-      "description": "Build with code coverage instrumentation",
-      "inherits": "debug",
-      "cacheVariables": {
-        "CMAKE_CXX_FLAGS_DEBUG": "--coverage"
-      },
-      "debug": {
-        "output": true
       }
     }
   ]

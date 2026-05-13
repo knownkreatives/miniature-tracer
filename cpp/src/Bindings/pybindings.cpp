@@ -17,7 +17,10 @@ PYBIND11_MODULE(minitracer_bindings, m) {
         .def_readwrite("path", &Module::path)
         .def("load", &Module::load)
         .def("unload", &Module::unload)
-        .def("call_function", &Module::call_function);
+        .def("call_function", &Module::call_function)
+        .def("call_function_with_args", &Module::call_function_with_args)
+        .def("call_procedure", &Module::call_procedure)
+        .def("call_procedure_with_args", &Module::call_procedure_with_args);
 
     // Bind the PythonManager class
     py::class_<PythonManager>(m, "PythonManager")
